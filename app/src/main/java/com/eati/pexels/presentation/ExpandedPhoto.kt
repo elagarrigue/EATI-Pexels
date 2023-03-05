@@ -2,10 +2,12 @@ package com.eati.pexels.presentation
 
 
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 
 
@@ -33,12 +35,17 @@ fun ExpandedPhoto(photo: Photo?) {
                 textAlign= TextAlign.Center,
                 color = MaterialTheme.colors.primary,
                 text = photo.alt)
-            AsyncImage(
+            Surface(elevation = 2.dp,
                 modifier = Modifier
-                    .padding(40.dp)
-                    .align(Alignment.CenterHorizontally),
-                model = photo.sourceURL,
-                contentDescription= photo.alt)
+                .padding(40.dp)
+                .align(Alignment.CenterHorizontally),
+                border = BorderStroke(3.dp,MaterialTheme.colors.primary)
+            ) {
+                AsyncImage(
+                    modifier= Modifier.padding(8.dp),
+                    model = photo.sourceURL,
+                    contentDescription= photo.alt)
+            }
             Row(modifier = Modifier
                 .padding(top = 20.dp, bottom = 15.dp)
                 .align(Alignment.CenterHorizontally)){
@@ -48,18 +55,19 @@ fun ExpandedPhoto(photo: Photo?) {
                     modifier = Modifier.size(30.dp),
                     tint = MaterialTheme.colors.primary
                 )
-                Text(modifier = Modifier.padding(top = 4.dp),text = photo.photographer)
+                Text(modifier = Modifier.padding(top = 4.dp, start = 4.dp),text = photo.photographer)
             }
             Row(modifier = Modifier
                 .padding(vertical = 15.dp)
-                .align(Alignment.CenterHorizontally)){
+                .align(Alignment.CenterHorizontally)
+            ){
                 Icon(
-                    imageVector = Icons.Filled.Close,
+                    imageVector = Icons.Filled.Add,
                     contentDescription = null,
                     modifier = Modifier.size(30.dp),
                     tint = MaterialTheme.colors.primary
                 )
-                Text(modifier = Modifier.padding(top = 4.dp), text = photo.width.toString()+"x"+photo.height.toString()+" pixels" )
+                Text(modifier = Modifier.padding(top = 4.dp, start = 4.dp), text = photo.width.toString()+"x"+photo.height.toString()+" pixels" )
             }
 
         }

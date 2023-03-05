@@ -35,10 +35,7 @@ fun PhotosScreen(viewModel: PhotosViewModel) {
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun PhotosScaffold(results: List<Photo>, updateResults: (String) -> Unit) {
-    //val scaffoldState= rememberScaffoldState()
-    //val scope= rememberCoroutineScope()
 
-    var text by remember {mutableStateOf("archictecture")}
     var expandedPhoto by remember { mutableStateOf<Photo?>(null) }
 
     Scaffold(
